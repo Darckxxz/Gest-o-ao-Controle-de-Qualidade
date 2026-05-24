@@ -50,8 +50,8 @@ class TestCriarTarefa:
         assert response.status_code == 422
 
     def test_criar_sem_corpo_retorna_400(self, client):
-        """Requisição sem corpo JSON deve retornar 400."""
-        response = client.post('/api/tasks', data='')
+        """Requisição sem corpo JSON válido deve retornar 400."""
+        response = client.post('/api/tasks', content_type='application/json', data='')
         assert response.status_code == 400
 
     def test_criar_status_invalido_retorna_422(self, client):
